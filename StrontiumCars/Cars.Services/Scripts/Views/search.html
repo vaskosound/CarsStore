@@ -1,0 +1,126 @@
+﻿<div id="search-form">
+    <h2>Search cars</h2>
+    <div>
+        <div class="row">
+            <div class="span4">
+                <label for="makers">Maker:</label>
+                <select
+                    data-role="dropdownlist"
+                    data-text-field="maker"
+                    data-value-field="makerId"
+                    data-bind="source: makers, value: makerValue, events:{change: makerChange}"
+                    id="makers">
+                </select>
+            </div>
+            <div class="span4">
+                <label for="models">Model:</label>
+                <select data-role="dropdownlist"
+                    data-text-field="model"
+                    data-value-field="modelId"
+                    data-bind="source: models, value: modelValue"
+                    id="models">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <label for="start-year">Year from</label>
+                <select data-role="dropdownlist"
+                    data-text-field="startyear"
+                    data-bind="source: startyears, value: startYearValue"
+                    id="start-year">
+                </select>
+            </div>
+            <div class="span4">
+                <label for="end-year">to</label>
+                <select data-role="dropdownlist"
+                    data-text-field="endyear"
+                    data-bind="source: endyears, value: endYearValue"
+                    id="end-year">
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <label for="start-hp">Horse power from</label>
+                <input id="start-hp" type="text" data-bind="value: startHp" />
+            </div>
+            <div class="span4">
+                <label for="end-hp">to</label>
+                <input id="end-hp" type="text" data-bind="value: endHp" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <label for="engine">Engine</label>
+                <select data-role="dropdownlist"
+                    data-text-field="engine"
+                    data-bind="source: engines, value: engineValue"
+                    id="engine">
+                </select>
+            </div>
+            <div class="span4">
+                <label for="gear">Gear</label>
+                <select data-role="dropdownlist"
+                    data-text-field="gear"
+                    data-bind="source: gears, value: gearValue"
+                    id="gear">
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <button data-bind="click: search">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!--    <div data-role="grid"
+                 data-sortable="false"
+                 data-editable="false"
+                 data-columns='["Result"]'
+                 data-bind="source: gridSource"
+                 data-template="rowTemplate">
+            </div>-->
+    <div data-bind="style: {display: hidden}">
+        <table id="grid">
+            <!-- <colgroup>
+                <col class="photo" />
+                <col class="details" />
+                <col />
+            </colgroup>-->
+            <thead>
+                <tr>
+                    <th colspan="3">Results</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>
+                    <td></td>
+                </tr>-->
+            </tbody>
+        </table>
+    </div>
+    <script id="rowTemplate" type="text/x-kendo-tmplate">
+	            <tr>
+		            <td class="photo">
+                       <img src="#: ImageUrl#" alt="#: Id #" />
+		            </td>
+		            <td class="details">
+			           <p>#: Maker # #: Model# </p>
+			           <p>Year: #: ProductionYear #</p>
+			           <p>#: Engine # Gear: #:Gear #</p>
+                        <p>Horses: #:HP#</>
+		            </td>
+		            <td>
+		              Price: $#: Price # 
+		            </td>
+                     <td>
+		               <button id="#: Id #" class="singleCarPage">Details</button>
+		            </td>
+	           </tr>
+    </script>
+
+</div>

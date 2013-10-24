@@ -1,0 +1,45 @@
+﻿#requiredCarData, #optionalCarData {
+    display: inline;
+    margin: 0px;
+}
+
+#requiredCarData {
+    width: 600px;
+}
+
+#requiredCarData input {
+    width: 300px;
+    display: inline-block;
+}
+
+#requiredCarData > span {
+    width: 250px;
+    display:inline-block;
+    margin-bottom: 10px;
+}
+
+
+#optionalCarData ul {
+    margin: 0px;
+    margin-bottom: 10px;
+    width: 33%;
+    display: inline-block;
+    list-style-type: none;
+}
+#optionalCarData ul li{
+    margin: 0px;
+    padding: 3px;
+}
+
+#optionalCarData ul li input[type="checkbox"]{
+    margin: 2px;
+}
+
+span.k-tooltip {
+    position: relative;
+}
+
+#error-message {
+    font-size: 1.5em;
+    color: red;
+}

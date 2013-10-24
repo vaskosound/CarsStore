@@ -1,0 +1,62 @@
+﻿<div data-template="car-template" data-bind="source: carSource">
+</div>
+
+<script type="text/x-kendo-template" id="car-template">
+    <div>
+        <img data-bind= "attr: {src: ImageUrl}"/>
+        <ul id="car-details">
+            <li>
+                Model: <span data-bind="text: Maker"></span>
+                <span data-bind="text: Model"></span>
+                <span data-bind="text: Engine"></span>
+                <span data-bind="text: FuelType"></span>
+                <span data-bind="text: EngineVolume"></span>
+            </li>
+            # if(Price != 0) { #
+                <li>
+                    Price: <span data-bind="text: Price"></span> $
+                </li> #
+            } 
+            if(ProductionYear != 0) { #
+                <li>
+                    Year: <span data-bind="text: ProductionYear"></span>
+                </li> #
+            }
+            if(Mileage != 0) { #
+                <li>
+                    Mileage: <span data-bind="text: Mileage"></span>
+                </li> #
+            }
+            if(HP != 0) { #
+                <li>
+                    Power: <span data-bind="text: HP"></span> HP
+                </li> #
+            }
+            if(Gear != "") { #
+                <li>
+                    Gear: <span data-bind="text: Gear"></span>
+                </li> #
+            }
+            if(Doors != "") { #
+                <li>
+                    Doors: <span data-bind="text: Doors"></span>
+                </li> #
+            }
+            if(Extras.length > 0) { #
+                <li>
+                    Extras
+                    <ul>
+                        # for (extra in Extras) {
+                            if(Extras[extra].Name != undefined) { #
+                            <li>
+                                <span>#= Extras[extra].Name #</span>
+                            </li> #
+                            }
+                        } #
+                    </ul>
+                </li> #
+            } #
+
+        </ul>
+    </div>
+</script>

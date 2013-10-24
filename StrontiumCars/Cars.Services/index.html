@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strontium Cars</title>
+    
+    <!--Stylesheets-->
+    <link href="Stylesheets/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="Stylesheets/bootstrap.css" rel="stylesheet" />
+    <link href="Stylesheets/kendo.common.min.css" rel="stylesheet" />
+    <link href="Stylesheets/kendo.default.min.css" rel="stylesheet" />
+    <link href="Stylesheets/kendoList.css" rel="stylesheet" />
+    <link href="Stylesheets/addCar.css" rel="stylesheet" />
+    <link href="Stylesheets/search.css" rel="stylesheet" />
+    <!--Scripts-->
+    <script src="Scripts/Data/CarsData.js"></script>
+    <script src="Scripts/Externals/jquery-2.0.3.js"></script>
+    <script src="Scripts/Externals/rsvp.min.js"></script>
+    <script src="Scripts/Externals/kendo.all.min.js"></script>
+    <script src="Scripts/Externals/kendo.web.min.js"></script>
+    <script src="Scripts/Externals/class.js"></script>
+    <script src="Scripts/Externals/sha1.js"></script>
+    <script src="Scripts/Externals/http-requester.js"></script>
+    <script src="Scripts/Data/persister.js"></script>
+    <script src="Scripts/Views/viewsFactory.js"></script>
+    <script src="Scripts/ViewModels/allCarsViewModel.js"></script>
+    <script src="Scripts/ViewModels/addCarVeiwModel.js"></script>
+    <script src="Scripts/ViewModels/getCarViewModel.js"></script>
+    <script src="Scripts/ViewModels/registerViewModel.js"></script>
+    <script src="Scripts/ViewModels/loginViewModel.js"></script>
+    <script src="Scripts/ViewModels/searchViewModel.js"></script>
+    <script src="Scripts/Data/CarsData.js"></script>
+    <script src="Scripts/app-start.js"></script>
+    
+    <script>
+        window.apiRootUrl = "http://localhost:7613/api/";
+        //window.apiRootUrl = "http://strontiumcars.apphb.com/api/";
+    </script>
+</head>
+<body>
+    <div id="master-page" class="container">
+    </div>
+
+    <script id="layout-template" type="text/x-kendo-template">
+        <header>
+            <nav>
+                <ul id="menuContainer">
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <div id="main-wrapper" class="row">
+                <div id="main-content" class="span8"></div>
+                <div class="span4">
+                    <div id="register-login"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div id="footer"></div>
+        </footer>
+    </script>
+</body>
+</html>

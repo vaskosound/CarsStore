@@ -1,0 +1,22 @@
+﻿label {
+    /*display: inline-block;*/
+}
+
+/*.rowWrapper {
+    width: 90%;
+    display: block;
+    margin-bottom: 20px;
+    padding: 5px;
+}*/
+
+.row {
+    /*margin-bottom: 10px;*/
+}
+
+.row > div {
+    /*text-align: left;*/
+}
+
+#carSearchButton {
+    /*margin-top: 20px;*/
+}

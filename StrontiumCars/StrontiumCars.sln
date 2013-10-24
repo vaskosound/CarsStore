@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Model", "Cars.Model\Cars.Model.csproj", "{065A6AA8-F442-4159-8E5A-8B8B815EA49D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Data", "Cars.Data\Cars.Data.csproj", "{2125C39D-D8DC-4759-B055-1E8C0CDB7477}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Services", "Cars.Services\Cars.Services.csproj", "{BE9F3BB2-A442-42ED-8326-979CAA8B3DB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Services.Tests", "Cars.Services.Tests\Cars.Services.Tests.csproj", "{3E8134D3-EDB5-4640-9C35-51B204C697D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cars.Repositories", "Cars.Repositories\Cars.Repositories.csproj", "{955402DF-6101-4C62-9CD2-DA4CDD026ABA}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs17
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Cars.Model\\Cars.Model.csproj
+		SccProjectName1 = Cars.Model
+		SccLocalPath1 = Cars.Model
+		SccProjectUniqueName2 = Cars.Data\\Cars.Data.csproj
+		SccProjectName2 = Cars.Data
+		SccLocalPath2 = Cars.Data
+		SccProjectUniqueName3 = Cars.Services\\Cars.Services.csproj
+		SccProjectName3 = Cars.Services
+		SccLocalPath3 = Cars.Services
+		SccProjectUniqueName4 = Cars.Services.Tests\\Cars.Services.Tests.csproj
+		SccProjectName4 = Cars.Services.Tests
+		SccLocalPath4 = Cars.Services.Tests
+		SccProjectUniqueName5 = Cars.Repositories\\Cars.Repositories.csproj
+		SccProjectName5 = Cars.Repositories
+		SccLocalPath5 = Cars.Repositories
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{065A6AA8-F442-4159-8E5A-8B8B815EA49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{065A6AA8-F442-4159-8E5A-8B8B815EA49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{065A6AA8-F442-4159-8E5A-8B8B815EA49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{065A6AA8-F442-4159-8E5A-8B8B815EA49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2125C39D-D8DC-4759-B055-1E8C0CDB7477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2125C39D-D8DC-4759-B055-1E8C0CDB7477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2125C39D-D8DC-4759-B055-1E8C0CDB7477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2125C39D-D8DC-4759-B055-1E8C0CDB7477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE9F3BB2-A442-42ED-8326-979CAA8B3DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9F3BB2-A442-42ED-8326-979CAA8B3DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9F3BB2-A442-42ED-8326-979CAA8B3DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9F3BB2-A442-42ED-8326-979CAA8B3DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8134D3-EDB5-4640-9C35-51B204C697D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8134D3-EDB5-4640-9C35-51B204C697D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8134D3-EDB5-4640-9C35-51B204C697D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8134D3-EDB5-4640-9C35-51B204C697D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955402DF-6101-4C62-9CD2-DA4CDD026ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955402DF-6101-4C62-9CD2-DA4CDD026ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955402DF-6101-4C62-9CD2-DA4CDD026ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955402DF-6101-4C62-9CD2-DA4CDD026ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

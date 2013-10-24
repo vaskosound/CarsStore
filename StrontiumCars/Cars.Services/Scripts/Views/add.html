@@ -1,0 +1,165 @@
+﻿<div id="add-car-form">
+    <h3>Add car</h3>
+    <div id="requiredCarData">
+        <input id="manufacturer" data-bind="value: maker" style="width: 300px" name="maker" required validationMessage="Please enter {0}" />
+        <br />
+        <input id="model" data-bind="value: model" style="width: 300px" name="model" required validationmessage="Please enter {0}" />
+        <br />
+        <input id="datePicker" data-bind="value: productionYear" style="width: 300px" name="year" placeholder="Production year" required validationmessage="Please enter {0}" />
+        <br />
+        <input data-bind="value: price" type="text" class="input-block-level" name="price" placeholder="Price" required validationmessage="Please enter {0}" />
+        <br />
+        <input data-bind="value: engine" type="text" class="input-block-level" name="engine" placeholder="Engine" required validationmessage="Please enter engine" />
+        <br />
+        <input id="fuelType" data-bind="value: fuelType" style="width: 300px" name="fuel type" required validationmessage="Please enter {0}">
+        <br />
+        <input data-bind="value: engineVolume" type="text" class="input-block-level" placeholder="Engine volume" name="engine volume" required validationmessage="Please enter {0}" />
+        <br />
+        <input data-bind="value: hp" type="text" class="input-block-level" placeholder="Power" name="power" required validationmessage="Please enter {0}" />
+        <br />
+        <input data-bind="value: mileage" type="text" class="input-block-level" name="mileage" placeholder="Mileage" required validationmessage="Please enter {0}" />
+        <br />
+        <input id="gear" data-bind="value: gear" style="width: 300px" name="gear" required validationmessage="Please enter {0}">
+        <br />
+        <input id="doors" data-bind="value: doors" style="width: 300px" name="doors" required validationmessage="Please enter {0}">
+        <br />
+        <input data-bind="value: imageUrl" type="url" class="input-block-level" placeholder="Image URL" name="image URL" required validationmessage="Please enter {0}" />
+        <br />
+    </div>
+    <div id="optionalCarData">
+        <ul id="comfort">
+            <li><strong>Comfort</strong></li>
+            <li><input type="checkbox" name="extra" value="airConditioning" data-bind="checked: airConditioning">Air conditioning</li>
+            <li><input type="checkbox" name="extra" value="climatronic" data-bind="checked: climatronic">Climatronic</li>
+            <li><input type="checkbox" name="extra" value="leather" data-bind="checked: leather">Leather tapestry</li>
+            <li><input type="checkbox" name="extra" value="electricWindows" data-bind="checked: electricWindows">Electric windows</li>
+            <li><input type="checkbox" name="extra" value="electricMirrors" data-bind="checked: electircMirrors">Electric mirrors</li>
+            <li><input type="checkbox" name="extra" value="electricSeats" data-bind="checked: electricSeats">Electric seats</li>
+            <li><input type="checkbox" name="extra" value="sunroof" data-bind="checked: sunroof">Sunroof</li>
+            <li><input type="checkbox" name="extra" value="stereoSystem" data-bind="checked: streoSystem">Stereo system</li>
+            <li><input type="checkbox" name="extra" value="aluminiumRims" data-bind="checked: aluminiumRims">Aluminium rims</li>
+            <li><input type="checkbox" name="extra" value="DVD/TV" data-bind="checked: dvd">DVD/TV</li>
+            <li><input type="checkbox" name="extra" value="multifunctionalSteeringWheel" data-bind="checked: multifunctionalSteeringWheel">Multifunctional steering wheel</li>
+            <li><input type="checkbox" name="extra" value="seatHeating" data-bind="checked: seatsHeating">Seats heating</li>
+        </ul>
+        <ul id="security">
+            <li><strong>Security</strong></li>
+            <li><input type="checkbox" name="extra" value="awd" data-bind="checked: awd">4x4</li>
+            <li><input type="checkbox" name="extra" value="abs" data-bind="checked: abs">ABS</li>
+            <li><input type="checkbox" name="extra" value="esp" data-bind="checked: esp">ESP</li>
+            <li><input type="checkbox" name="extra" value="airbag" data-bind="checked: airbag">Airbag</li>
+            <li><input type="checkbox" name="extra" value="xenon" data-bind="checked: xenon">Xenon headlights</li>
+            <li><input type="checkbox" name="extra" value="halogen" data-bind="checked: halogen">Halogen headlights</li>
+            <li><input type="checkbox" name="extra" value="asr" data-bind="checked: asr">ASR</li>
+            <li><input type="checkbox" name="extra" value="parktronic" data-bind="checked: parktronic">Parktronic</li>
+            <li><input type="checkbox" name="extra" value="alarm" data-bind="checked: alarm">Alarm</li>
+            <li><input type="checkbox" name="extra" value="immobilizer" data-bind="checked: immobilizer">Immobilizer</li>
+            <li><input type="checkbox" name="extra" value="insurance" data-bind="checked: insurance">Insurance</li>
+            <li><input type="checkbox" name="extra" value="armour" data-bind="checked: armour">Armoured</li>
+        </ul>
+        <ul id="others">
+            <li><strong>Others</strong></li>
+            <li><input type="checkbox" name="extra" value="tiptronic" data-bind="checked: tiptronic">Tiptronic</li>
+            <li><input type="checkbox" name="extra" value="autopilot" data-bind="checked: autopilot">Autopilot</li>
+            <li><input type="checkbox" name="extra" value="servo" data-bind="checked: servo">Servo</li>
+            <li><input type="checkbox" name="extra" value="computer" data-bind="checked: computer">On board computer</li>
+            <li><input type="checkbox" name="extra" value="guarantee" data-bind="checked: guarantee">Guarantee</li>
+            <li><input type="checkbox" name="extra" value="navigation" data-bind="checked: navigation">Navigational system</li>
+            <li><input type="checkbox" name="extra" value="rightSteeringWheel" data-bind="checked: rightSteeringWheel">Right steering wheel</li>
+            <li><input type="checkbox" name="extra" value="tuning" data-bind="checked: tuning">Tuning</li>
+            <li><input type="checkbox" name="extra" value="taxi" data-bind="checked: taxi">Taxi</li>
+            <li><input type="checkbox" name="extra" value="retro" data-bind="checked: retro">Retro</li>
+            <li><input type="checkbox" name="extra" value="refrigerator" data-bind="checked: refrigerator">Refrigerator</li>
+            <li><input type="checkbox" name="extra" value="military" data-bind="checked: military">Military</li>
+        </ul>
+    </div>
+    <button data-bind="events: { click: addCar }" class="btn btn-primary">Add car</button>
+    <div id="error-message"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var manufacturerData = [];
+        var modelsData = [];
+        for (var i = 0; i < manufacturersAndModels.length; i++) {
+            manufacturerData.push({ Id: i, Manufacturer: manufacturersAndModels[i][0] });
+        }
+
+        function onSelect(e) {
+            var dataItem = this.dataItem(e.item.index());
+            var models = manufacturersAndModels[dataItem.Id];
+            modelsData = [];
+            for (var i = 2; i < models.length; i++) {
+                modelsData.push({ Id: i, Model: models[i] });
+            }
+            //$('#model').data('kendoDropDownList').dataSource.data({});
+            $('#model').data('kendoDropDownList').dataSource.data(modelsData);
+
+        };
+
+        var manufacturers = $("#manufacturer").kendoDropDownList({
+            optionLabel: "Select manufacturer...",
+            dataTextField: "Manufacturer",
+            dataValueField: "Manufacturer",
+            select: onSelect,
+            dataSource: manufacturerData
+        }).data("kendoDropDownList");
+
+        var models = $("#model").kendoDropDownList({
+            autoBind: false,
+            cascadeFrom: "manufacturers",
+            optionLabel: "Select model...",
+            dataTextField: "Model",
+            dataValueField: "Model",
+            dataSource: modelsData,
+        }).data("kendoDropDownList");
+
+        $("#datePicker").kendoDatePicker({
+            // defines the start view
+            start: "year",
+
+            // defines when the calendar should return date
+            depth: "year",
+
+            // display month and year in the input
+            format: "yyyy"
+        });
+
+        $("#gear").kendoComboBox({
+            dataTextField: "text",
+            dataValueField: "value",
+            placeholder: "Select gears...",
+            dataSource: [
+                { text: "Manual", value: "Manual" },
+                { text: "Automatic", value: "Automatic" },
+            ],
+            suggest: true,
+            index: 3
+        });
+
+        $("#doors").kendoComboBox({
+            dataTextField: "text",
+            dataValueField: "value",
+            placeholder: "Select doors...",
+            dataSource: [
+                { text: "2/3", value: "2/3" },
+                { text: "4/5", value: "4/5" },
+            ],
+            suggest: true,
+            index: 3
+        });
+
+        $("#fuelType").kendoComboBox({
+            dataTextField: "text",
+            dataValueField: "value",
+            placeholder: "Select fuel type...",
+            dataSource: [
+                { text: "Petrol", value: "Petrol" },
+                { text: "Diesel", value: "Diesel" },
+                { text: "Gas", value: "Gas" },
+            ],
+            suggest: true,
+            index: 3
+        });
+    });
+</script>
