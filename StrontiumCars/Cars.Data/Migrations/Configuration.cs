@@ -18,14 +18,24 @@ namespace Cars.Data.Migrations
         {
             if (context.Users.Count() == 0)
             {
-                User user = new User() 
+                User admin = new User() 
                 {
                    Username = "Admin",
                    DisplayName = "admin",
                    AuthCode = "f865b53623b121fd34ee5426c792e5c33af8c227",
                    UserType = UserType.Administrator
                 };
-                context.Users.Add(user);
+
+                User dealer = new User()
+                {
+                    Username = "Dealer",
+                    DisplayName = "dealer",
+                    AuthCode = "92bf07a4c0cda37afbfebfc3bf12dd9f09911d7f",
+                    UserType = UserType.Dealer
+                };
+                context.Users.Add(admin);
+                context.Users.Add(dealer);
+                context.SaveChanges();
             }
         }
     }
