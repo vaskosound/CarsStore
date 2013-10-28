@@ -284,6 +284,7 @@
     <Content Include="Scripts\Views\all-cars.html" />
     <Content Include="Scripts\Views\car-details.html" />
     <Content Include="Scripts\Views\search.html" />
+    <Content Include="Scripts\Views\about.html" />
     <Content Include="Scripts\Views\watchlist.html" />
     <Content Include="Scripts\Views\home.html" />
     <Content Include="Scripts\Views\login.html" />

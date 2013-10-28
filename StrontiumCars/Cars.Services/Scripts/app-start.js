@@ -8,10 +8,16 @@
     var registerLoginContainer;
     var logoutButton;
 
-    var notLoggedDataSource = [{
-        text: "Home",
-        url: "#/home"
-    }];
+    var notLoggedDataSource = [
+        {
+            text: "Home",
+            url: "#/home"
+        },
+        {
+            text: "About",
+            url: "#/about"
+        }
+    ];
 
     var adminDataSource = [
         {
@@ -88,6 +94,13 @@
         });
     });
 
+    router.route("/about", function () {
+        loginPageCheck();
+        clearMainContainer();
+        $('#main-content').load('../Scripts/Views/about.html', function () {
+        });
+    });
+
     router.route("/search", function () {
         loginPageCheck();
         clearMainContainer();
@@ -99,7 +112,7 @@
             $("#grid").kendoGrid({
                 dataSource: viewModel.gridSource,
                 rowTemplate: kendo.template($("#rowTemplate").html()),
-            });           
+            });
         });
     });
 
@@ -117,7 +130,7 @@
         });
     });
 
-   
+
     router.route("/watch", function () {
         loginPageCheck();
         clearMainContainer();
@@ -189,8 +202,9 @@
             registerLoginContainer.style.display = "none";
             mainContentContainer.classList.remove('span8');
             mainContentContainer.classList.add('span12');
+            $("#loggedUser").text("Hi, " + globalPersister.getDisplayName());
             $('#logoutButton').show();
-                
+
         } else {
             mainContentContainer.classList.remove('span12');
             mainContentContainer.classList.add('span8');
@@ -201,13 +215,19 @@
     }
 
     function createLogoutButton() {
+        var persister = persisters.getPersister();
         var container = $('header > nav ul');
-        var button = $('<button id="logoutButton"></button>');
+        var loggedUser = $("<div id='logoutButton'></div>");
+        var username = $('<span id="loggedUser"></span>');
+        username.addClass("lead");
+        var button = $('<button ></button>');
         button.addClass("btn");
         button.addClass("btn-danger");
-        button.addClass("pull-right");
+        loggedUser.addClass("pull-right");
         button.html("Logout");
-        container.append(button);
+        loggedUser.append(username);
+        loggedUser.append(button);
+        container.append(loggedUser);
     }
 
     function handleMenuTemplate() {
@@ -217,7 +237,7 @@
         var len = menuContent.element.children('li').length - 1;
         for (var i = 0; i < len; i++) {
             var item = menuContent.element;
-            item = item.children("li").eq(1);
+            item = item.children("li").eq(2);
             var z = item;
 
             menuContent.remove(z);
