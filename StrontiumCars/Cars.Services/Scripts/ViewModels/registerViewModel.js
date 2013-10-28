@@ -20,9 +20,11 @@
                     location: this.get("location")
                 }).then(function (data) {
                     console.log(data);
+                    $("#errors-log-reg").text("");
                     success();
                 }, function (error) {
                     console.log(error);
+                    $("#errors-log-reg").text(error.responseJSON.Message);
                 });
             }
         };

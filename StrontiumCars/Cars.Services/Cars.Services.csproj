@@ -182,6 +182,7 @@
     <Compile Include="Models\ServerErrorException.cs" />
     <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CarVaildator.cs" />
     <Compile Include="Utilities\SessionGenerator.cs" />
     <Compile Include="Utilities\UserValidator.cs" />
   </ItemGroup>

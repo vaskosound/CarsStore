@@ -73,7 +73,7 @@
                     return data;
                 },
                 function (error) {
-                    console.log(error);
+                    return error;
                 });
         },
         register: function (user) {
@@ -81,7 +81,7 @@
             var userData =
             {
                 username: user.username,
-                authCode: CryptoJS.SHA1(user.password).toString(),
+                authCode: user.password != "" ? CryptoJS.SHA1(user.password).toString() : "",
                 displayName: user.displayName,
                 mail: user.mail,
                 phone: user.phone,
@@ -91,8 +91,8 @@
             return httpRequester.postJSON(url, userData).then(function (data) {
                 storeData(data);
                 return data;
-            }, function (data) {
-                return data;
+            }, function (error) {
+                return error;
             });
         },
         logout: function (success) {

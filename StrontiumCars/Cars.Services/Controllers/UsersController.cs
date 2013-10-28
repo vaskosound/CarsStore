@@ -94,14 +94,15 @@ namespace Cars.Services.Controllers
 
         [HttpPost]
         [ActionName("login")]
-        public UserLoginResponseModel Login([FromBody] UserLoginRequestModel userModel)
+        public HttpResponseMessage Login([FromBody] UserLoginRequestModel userModel)
         {
             var responseMessage = this.TryExecuteOperation(() =>
             {
-                var user = this.unitOfWork.userRepository.All().SingleOrDefault(x => x.Username == userModel.Username && x.AuthCode == userModel.AuthCode);
+                var user = this.unitOfWork.userRepository.All()
+                    .SingleOrDefault(x => x.Username == userModel.Username && x.AuthCode == userModel.AuthCode);
                 if (user == null)
                 {
-                    throw new ArgumentException("User is not registered!");
+                    throw new InvalidOperationException("User is not registered!");
                 }
 
                 if (user.SessionKey == null)
@@ -110,7 +111,7 @@ namespace Cars.Services.Controllers
                     this.unitOfWork.userRepository.Update(user.Id, user);
                 }
 
-                return UserLoginResponseModel.FromEntity(user);
+                return this.Request.CreateResponse(HttpStatusCode.OK, UserLoginResponseModel.FromEntity(user));
             });
 
             return responseMessage;

@@ -10,6 +10,7 @@ using Cars.Model;
 using Cars.Services.Attributes;
 using Cars.Services.Data;
 using Cars.Services.Models;
+using Cars.Services.Utilities;
 
 namespace Cars.Services.Controllers
 {
@@ -25,7 +26,7 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<IEnumerable<CarModel>>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                ValidateUser(user);
+                UserValidator.ValidateUser(user);
 
                 var matchedCars = unitOfWork.carRepository.All();
                 var carModels = matchedCars.Select(x => new CarModel()
@@ -92,7 +93,7 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<CarDetailedModel>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                ValidateUser(user);
+                UserValidator.ValidateUser(user);
 
                 var car = unitOfWork.carRepository.All().Single(x => x.Id == id);
                 var carModel = new CarDetailedModel()
@@ -131,19 +132,19 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<HttpResponseMessage>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                ValidateUser(user);
-                ValidateMaker(car.Maker);
-                ValidateModel(car.Model);
-                ValidateProductionYear(car.ProductionYear);
-                ValidatePrice(car.Price);
-                ValidateEngine(car.Engine);
-                ValidateFuelType(car.FuelType);
-                ValidateEngineVolume(car.EngineVolume);
-                ValidateHp(car.HP);
-                ValidateMileage(car.Mileage);
-                ValidateGear(car.Gear);
-                ValidateDoors(car.Doors);
-                ValidateImageUrl(car.ImageUrl);
+                UserValidator.ValidateUser(user);
+                CarVaildator.ValidateMaker(car.Maker);
+                CarVaildator.ValidateModel(car.Model);
+                CarVaildator.ValidateProductionYear(car.ProductionYear);
+                CarVaildator.ValidatePrice(car.Price);
+                CarVaildator.ValidateEngine(car.Engine);
+                CarVaildator.ValidateFuelType(car.FuelType);
+                CarVaildator.ValidateEngineVolume(car.EngineVolume);
+                CarVaildator.ValidateHp(car.HP);
+                CarVaildator.ValidateMileage(car.Mileage);
+                CarVaildator.ValidateGear(car.Gear);
+                CarVaildator.ValidateDoors(car.Doors);
+                CarVaildator.ValidateImageUrl(car.ImageUrl);
 
                 var newCar = new Car()
                 {
@@ -216,7 +217,7 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation <HttpResponseMessage>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                ValidateUser(user);
+                UserValidator.ValidateUser(user);
 
                 unitOfWork.carRepository.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
@@ -233,7 +234,7 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<IEnumerable<CarModel>>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                ValidateUser(user);
+                UserValidator.ValidateUser(user);
 
                 var matchedCars =
                     unitOfWork.carRepository.All();

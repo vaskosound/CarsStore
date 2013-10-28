@@ -246,7 +246,7 @@
     function attachEvents(selector) {
         selector.on('click', '#getLoginForm', function (ev) {
             ev.preventDefault();
-
+            $("#errors-log-reg").text("");
             viewsFactory.getLoginView().then(function (loginFormHTML) {
                 var viewModel = viewModelFactory.getLoginViewModel(function () {
                     loginPageCheck();
@@ -259,7 +259,7 @@
 
         selector.on('click', '#getRegisterForm', function (ev) {
             ev.preventDefault();
-
+            $("#errors-log-reg").text("");
             viewsFactory.getRegisterView().then(function (registerFormHTML) {
                 var viewModel = viewModelFactory.getRegisterViewModel(function () {
                     loginPageCheck();

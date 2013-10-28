@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cars.Model;
+using Cars.Services.Models;
+using System;
 using System.Linq;
 
 namespace Cars.Services.Utilities
@@ -13,6 +15,13 @@ namespace Cars.Services.Utilities
         private const int MaxUsernameNicknameChars = 30;
         private const int Sha1CodeLength = 40;
 
+        public static void ValidateUser(User user)
+        {
+            if (user == null)
+            {
+                throw new ServerErrorException("User has not logged in!");
+            }
+        }
         public static void ValidateUsername(string username)
         {
             if (username == null || username.Length < MinUsernameNicknameChars || username.Length > MaxUsernameNicknameChars)
@@ -20,11 +29,11 @@ namespace Cars.Services.Utilities
                 throw new ArgumentException(string.Format(
                     "Username should be between {0} and {1} symbols long",
                     MinUsernameNicknameChars,
-                    MaxUsernameNicknameChars), "username");
+                    MaxUsernameNicknameChars));
             }
             else if (username.Any(ch => !ValidUsernameChars.Contains(ch)))
             {
-                throw new ArgumentException("Username contains invalid characters", "username");
+                throw new ArgumentException("Username contains invalid characters");
             }
         }
 
@@ -35,11 +44,11 @@ namespace Cars.Services.Utilities
                 throw new ArgumentException(string.Format(
                     "Nickname should be between {0} and {1} symbols long",
                     MinUsernameNicknameChars,
-                    MaxUsernameNicknameChars), "nickname");
+                    MaxUsernameNicknameChars));
             }
             else if (nickname.Any(ch => !ValidNicknameChars.Contains(ch)))
             {
-                throw new ArgumentException("Nickname contains invalid characters", "nickname");
+                throw new ArgumentException("Nickname contains invalid characters");
             }
         }
 
@@ -47,7 +56,7 @@ namespace Cars.Services.Utilities
         {
             if (authCode.Length != Sha1CodeLength)
             {
-                throw new ArgumentException("Invalid user authentication", "authCode");
+                throw new ArgumentException("Invalid user authentication");
             }
         }
     }
