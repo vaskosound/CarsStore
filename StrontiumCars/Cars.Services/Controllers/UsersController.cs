@@ -108,7 +108,7 @@ namespace Cars.Services.Controllers
                 if (user.SessionKey == null)
                 {
                     user.SessionKey = SessionGenerator.GenerateSessionKey(user.Id);
-                    this.unitOfWork.userRepository.Update(user.Id, user);
+                    this.unitOfWork.userRepository.Update(user);
                 }
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, UserLoginResponseModel.FromEntity(user));
@@ -143,7 +143,7 @@ namespace Cars.Services.Controllers
                 user.UserType = UserType.Client;
                 this.unitOfWork.userRepository.Add(user);
                 user.SessionKey = SessionGenerator.GenerateSessionKey(user.Id);
-                this.unitOfWork.userRepository.Update(user.Id, user);
+                this.unitOfWork.userRepository.Update(user);
 
                 return this.Request.CreateResponse(HttpStatusCode.Created, UserRegisterResponseModel.FromEntity(user));
             });
@@ -165,9 +165,9 @@ namespace Cars.Services.Controllers
                 }
 
                 user.SessionKey = null;
-                this.unitOfWork.userRepository.Update(user.Id, user);
+                this.unitOfWork.userRepository.Update(user);
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, user);
+                return this.Request.CreateResponse(HttpStatusCode.OK, userModel);
             });
 
             return messageResponse;

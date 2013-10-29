@@ -122,10 +122,24 @@
             var header = getSessionKeyHeader();
             return httpRequester.getJSON(this.rootUrl + "all", header);
         },
+        getMyCars: function () {
+            var header = getSessionKeyHeader();
+            return httpRequester.getJSON(this.rootUrl + "my-cars", header);
+        },
         addCar: function (car) {
             var url = this.rootUrl + "create";
             var header = getSessionKeyHeader();
             return httpRequester.postJSON(url, car, header);
+        },
+        editCar: function (id, car) {
+            var url = this.rootUrl + "edit/" + id;
+            var header = getSessionKeyHeader();
+            return httpRequester.putJSON(url, car, header);
+        },
+        deleteCar: function (id) {
+            var url = this.rootUrl + "delete/" + id;
+            var header = getSessionKeyHeader();
+            return httpRequester.deleteJSON(url, header);
         },
         search: function(data) {
 

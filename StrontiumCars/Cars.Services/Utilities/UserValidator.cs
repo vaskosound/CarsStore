@@ -22,6 +22,14 @@ namespace Cars.Services.Utilities
                 throw new ServerErrorException("User has not logged in!");
             }
         }
+
+        public static void ValidateDealer(UserType userType)
+        {
+            if (userType != UserType.Dealer)
+            {
+                throw new ServerErrorException("User is not a dealer!");
+            }
+        }
         public static void ValidateUsername(string username)
         {
             if (username == null || username.Length < MinUsernameNicknameChars || username.Length > MaxUsernameNicknameChars)

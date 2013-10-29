@@ -75,18 +75,16 @@ namespace Cars.Repositories
             }
         }
 
-        public void Update(int id, T item)
+        public void Update(T item)
         {
-            //DbEntityEntry entry = this.Context.Entry(item);
-            //if (entry.State == EntityState.Detached)
-            //{
-            //    this.DbSet.Attach(item);
-            //}
+            DbEntityEntry entry = this.Context.Entry(item);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(item);
+            }
 
-            //entry.State = EntityState.Modified;
-            var entityToUpdate = this.DbSet.Find(id);
-            this.Context.Entry<T>(entityToUpdate).CurrentValues.SetValues(item);
-
+            entry.State = EntityState.Modified;
+            
             this.Context.SaveChanges();
         }
     }

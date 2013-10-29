@@ -37,6 +37,10 @@
         return getTemplate("all-cars");
     }
 
+    function getMyCarsView() {
+        return getTemplate("my-cars");
+    }
+
     function getCarView() {
         return getTemplate("car-details");
     }
@@ -57,6 +61,7 @@
         getLoginView: getLoginView,
         getRegisterView: getRegisterView,
         getAllCarsView: getAllCarsView,
+        getMyCarsView: getMyCarsView,
         getSearchView: getSearchView,
         getCarView: getCarView,
         getAddCarView: getAddCarView,

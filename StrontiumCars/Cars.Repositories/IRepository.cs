@@ -12,6 +12,6 @@ namespace Cars.Repositories
 
         void Delete(int id);
 
-        void Update(int id, T item);
+        void Update(T item);
     }
 }

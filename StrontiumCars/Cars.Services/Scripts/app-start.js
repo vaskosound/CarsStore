@@ -53,7 +53,12 @@
         {
             text: "Add Car",
             url: "#/add"
-        }];
+        },
+        {
+            text: "My Cars",
+            url: "#/my-cars"
+        }
+    ];
 
     var userDataSource = [
        {
@@ -121,7 +126,7 @@
         clearMainContainer();
         viewsFactory.getAddCarView().then(function (addCarHTML) {
             var viewModel = viewModelFactory.getAddCarViewModel(function () {
-                router.navigate('/cars');
+                router.navigate('/my-cars');
             });
             var view = new kendo.View(addCarHTML, { model: viewModel });
             layout.showIn("#main-content", view);
@@ -155,6 +160,25 @@
         });
     });
 
+    router.route("/my-cars", function () {
+        loginPageCheck();
+        clearMainContainer();
+        viewsFactory.getMyCarsView().then(function (myCarsHtml) {
+            viewModelFactory.getMyCarsViewModel()
+                .then(function (vm) {
+                    var view = new kendo.View(myCarsHtml,
+                        { model: vm });
+                    layout.showIn("#main-content", view);
+                  
+                $("#grid").kendoGrid({
+                    dataSource: vm.gridSource,
+                    rowTemplate: kendo.template($("#rowTemplate").html()),
+                });
+                kendo.bind($("#example"), vm);
+            });
+        });
+    });
+
     router.route("/cars/single/:id", function (id) {
         loginPageCheck();
         clearMainContainer();
@@ -170,6 +194,22 @@
                     //    dataSource: vm
                     //}); 
                 });
+        });
+    });
+
+    router.route("/cars/edit/:id", function (id) {
+        loginPageCheck();
+        clearMainContainer();
+        viewsFactory.getAddCarView().then(function (addCarHTML) {
+            viewModelFactory.getEditCarViewModel(id, function () {
+                router.navigate('/my-cars');
+            }).then(function (viewModel) {
+                var view = new kendo.View(addCarHTML,
+                    { model: viewModel });
+                layout.showIn("#main-content", view);
+                kendo.bind($("#add-car-form"), viewModel);
+                var validator = $("#requiredCarData").kendoValidator().data("kendoValidator");
+            });
         });
     });
 
@@ -294,8 +334,7 @@
         selector.on('click', '#logoutButton', function (ev) {
             ev.preventDefault();
 
-            var persister = persisters.getPersister();
-            persister.user.logout(function () {
+            globalPersister.user.logout(function () {
                 router.navigate('/');
             });
         });
@@ -306,6 +345,27 @@
             var id = ev.target.id;
             router.navigate("/cars/single/" + id);
         });
+
+        selector.on('click', '.editCarPage', function (ev) {
+            ev.preventDefault();
+
+            var id = ev.target.id;
+            router.navigate("/cars/edit/" + id);
+        });
+
+        //selector.on('click', '.deleteCar', function (ev) {
+        //    ev.preventDefault();
+
+        //    var id = ev.target.id;
+        //    globalPersister.cars.deleteCar(id)
+        //        .then(function (data) {
+        //            console.log(data);
+        //            router.navigate("/cars");
+        //            router.navigate("/my-cars");
+        //        }, function (error) {
+        //            console.log(error);
+        //        });
+        //});
     }
 
     $(function () {

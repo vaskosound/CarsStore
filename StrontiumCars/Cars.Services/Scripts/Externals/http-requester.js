@@ -59,9 +59,28 @@
         return promise;
     }
 
+    function deleteJSON(requestUrl, headers) {
+        var promise = new RSVP.Promise(function (resolve, reject) {
+            $.ajax({
+                url: requestUrl,
+                type: "DELETE",
+                dataType: "json",
+                headers: headers,
+                success: function (data) {
+                    resolve(data);
+                },
+                error: function (err) {
+                    reject(err);
+                }
+            });
+        });
+        return promise;
+    }
+
     return {
         postJSON: postJSON,
         getJSON: getJSON,
-        putJSON: putJSON
+        putJSON: putJSON,
+        deleteJSON: deleteJSON
     };
 }());

@@ -39,7 +39,46 @@ namespace Cars.Services.Controllers
                     Engine = x.Engine,
                     Gear = x.Gear,
                     HP = x.HP,
-                    ImageUrl = x.ImageUrl
+                    ImageUrl = x.ImageUrl,
+                    Doors = x.Doors,
+                    FuelType = x.FuelType,
+                    Mileage = x.Mileage,
+                    EngineVolume = x.EngineVolume
+                });
+
+                return carModels;
+            });
+
+            return messageResponse;
+        }
+
+        [HttpGet]
+        [ActionName("my-cars")]
+        public IEnumerable<CarModel> GetMyCars(
+            [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var messageResponse = this.TryExecuteOperation<IEnumerable<CarModel>>(() =>
+            {
+                var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
+                UserValidator.ValidateUser(user);
+                UserValidator.ValidateDealer(user.UserType);
+                var matchedCars = unitOfWork.carRepository.All()
+                    .Where(x => x.Owner.DisplayName == user.DisplayName);
+                var carModels = matchedCars.Select(x => new CarModel()
+                {
+                    Id = x.Id,
+                    Maker = x.Maker,
+                    Model = x.Model,
+                    ProductionYear = x.ProductionYear,
+                    Price = x.Price,
+                    Engine = x.Engine,
+                    Gear = x.Gear,
+                    HP = x.HP,
+                    ImageUrl = x.ImageUrl,
+                    Doors = x.Doors,
+                    FuelType = x.FuelType,
+                    Mileage = x.Mileage,
+                    EngineVolume = x.EngineVolume
                 });
 
                 return carModels;
@@ -191,26 +230,75 @@ namespace Cars.Services.Controllers
             return messageResponse;
         }
 
-        //[HttpPut]
-        //public HttpResponseMessage UpdateCar(int id, [FromBody] 
-        //    [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
-        //{
-        //    var messageResponse = this.TryExecuteOperation<HttpResponseMessage>(() =>
-        //    {
-        //        var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-        //        if (user == null)
-        //        {
-        //            throw new InvalidOperationException("User has not logged in!");
-        //        }
+        [HttpPut]
+        [ActionName("edit")]
+        public HttpResponseMessage UpdateCar(int id, [FromBody] CarDetailedModel car,
+            [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var messageResponse = this.TryExecuteOperation<HttpResponseMessage>(() =>
+            {
+                var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
+                UserValidator.ValidateUser(user);
+                UserValidator.ValidateDealer(user.UserType);
+                CarVaildator.ValidateMaker(car.Maker);
+                CarVaildator.ValidateModel(car.Model);
+                CarVaildator.ValidateProductionYear(car.ProductionYear);
+                CarVaildator.ValidatePrice(car.Price);
+                CarVaildator.ValidateEngine(car.Engine);
+                CarVaildator.ValidateFuelType(car.FuelType);
+                CarVaildator.ValidateEngineVolume(car.EngineVolume);
+                CarVaildator.ValidateHp(car.HP);
+                CarVaildator.ValidateMileage(car.Mileage);
+                CarVaildator.ValidateGear(car.Gear);
+                CarVaildator.ValidateDoors(car.Doors);
+                CarVaildator.ValidateImageUrl(car.ImageUrl);
 
-        //        unitOfWork.carRepository.Delete(id);
-        //        return Request.CreateResponse(HttpStatusCode.OK);
-        //    });
+                var carToUpdate = new Car()
+                {
+                    Id = id,
+                    Maker = car.Maker,
+                    Model = car.Model,
+                    ProductionYear = car.ProductionYear,
+                    Price = car.Price,
+                    Engine = car.Engine,
+                    HP = car.HP,
+                    Gear = car.Gear,
+                    ImageUrl = car.ImageUrl,
+                    Doors = car.Doors,
+                    EngineVolume = car.EngineVolume,
+                    FuelType = car.FuelType,
+                    Mileage = car.Mileage,
+                    Owner = user,
+                };
 
-        //    return messageResponse;
-        //}
+                if (car.Extras != null)
+                {
+                    foreach (var extra in car.Extras)
+                    {
+                        var newExtra = new Extra();
+                        var existingExtra =
+                            this.unitOfWork.extraRepository.All().FirstOrDefault(x => x.Name == extra.Name);
+                        if (existingExtra == null)
+                        {
+                            newExtra.Name = extra.Name;
+                        }
+                        else
+                        {
+                            newExtra = existingExtra;
+                        }
+
+                        carToUpdate.Extras.Add(newExtra);
+                    }
+                }
+                unitOfWork.carRepository.Update(carToUpdate);
+                return Request.CreateResponse(HttpStatusCode.OK, car);
+            });
+
+            return messageResponse;
+        }
 
         [HttpDelete]
+        [ActionName("delete")]
         public HttpResponseMessage DeleteCar(int id,
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
         {
@@ -218,9 +306,27 @@ namespace Cars.Services.Controllers
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
                 UserValidator.ValidateUser(user);
+                UserValidator.ValidateDealer(user.UserType);
 
                 unitOfWork.carRepository.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var myCars = unitOfWork.carRepository.All().Where(c => c.Owner.DisplayName == user.DisplayName);
+                var carModels = myCars.Select(x => new CarModel()
+                {
+                    Id = x.Id,
+                    Maker = x.Maker,
+                    Model = x.Model,
+                    ProductionYear = x.ProductionYear,
+                    Price = x.Price,
+                    Engine = x.Engine,
+                    Gear = x.Gear,
+                    HP = x.HP,
+                    ImageUrl = x.ImageUrl,
+                    Doors = x.Doors,
+                    FuelType = x.FuelType,
+                    Mileage = x.Mileage,
+                    EngineVolume= x.EngineVolume
+                });
+                return Request.CreateResponse(HttpStatusCode.OK, carModels);
             });
 
             return messageResponse;
@@ -271,7 +377,7 @@ namespace Cars.Services.Controllers
 
                 if (carModel.Engine != null)
                 {
-                    matchedCars = matchedCars.Where(x => x.Engine == carModel.Engine);
+                    matchedCars = matchedCars.Where(x => x.FuelType == carModel.Engine);
                 }
 
                 if (carModel.Gear != null)
@@ -290,11 +396,10 @@ namespace Cars.Services.Controllers
                     Gear = x.Gear,
                     HP = x.HP,
                     ImageUrl = x.ImageUrl,
-                    Extras = (from extra in x.Extras
-                             select new ExtrasModel()
-                             {
-                                 Name = extra.Name
-                             })
+                    Doors = x.Doors,
+                    FuelType = x.FuelType,
+                    Mileage = x.Mileage,
+                    EngineVolume = x.EngineVolume
                 });
 
                 return carModels;

@@ -4,40 +4,35 @@
         <div class="row">
             <div class="span4">
                 <label for="makers">Maker:</label>
-                <select
-                    data-role="dropdownlist"
-                    data-text-field="maker"
-                    data-value-field="makerId"
-                    data-bind="source: makers, value: makerValue, events:{change: makerChange}"
-                    id="makers">
-                </select>
+                <select data-role="dropdownlist"
+                        data-text-field="maker"
+                        data-value-field="makerId"
+                        data-bind="source: makers, value: makerValue, events:{change: makerChange}"
+                        id="makers"></select>
             </div>
             <div class="span4">
                 <label for="models">Model:</label>
                 <select data-role="dropdownlist"
-                    data-text-field="model"
-                    data-value-field="modelId"
-                    data-bind="source: models, value: modelValue"
-                    id="models">
-                </select>
+                        data-text-field="model"
+                        data-value-field="modelId"
+                        data-bind="source: models, value: modelValue"
+                        id="models"></select>
             </div>
         </div>
         <div class="row">
             <div class="span4">
                 <label for="start-year">Year from</label>
                 <select data-role="dropdownlist"
-                    data-text-field="startyear"
-                    data-bind="source: startyears, value: startYearValue"
-                    id="start-year">
-                </select>
+                        data-text-field="startyear"
+                        data-bind="source: startyears, value: startYearValue"
+                        id="start-year"></select>
             </div>
             <div class="span4">
                 <label for="end-year">to</label>
                 <select data-role="dropdownlist"
-                    data-text-field="endyear"
-                    data-bind="source: endyears, value: endYearValue"
-                    id="end-year">
-                </select>
+                        data-text-field="endyear"
+                        data-bind="source: endyears, value: endYearValue"
+                        id="end-year"></select>
             </div>
         </div>
 
@@ -56,18 +51,16 @@
             <div class="span4">
                 <label for="engine">Engine</label>
                 <select data-role="dropdownlist"
-                    data-text-field="engine"
-                    data-bind="source: engines, value: engineValue"
-                    id="engine">
-                </select>
+                        data-text-field="engine"
+                        data-bind="source: engines, value: engineValue"
+                        id="engine"></select>
             </div>
             <div class="span4">
                 <label for="gear">Gear</label>
                 <select data-role="dropdownlist"
-                    data-text-field="gear"
-                    data-bind="source: gears, value: gearValue"
-                    id="gear">
-                </select>
+                        data-text-field="gear"
+                        data-bind="source: gears, value: gearValue"
+                        id="gear"></select>
             </div>
         </div>
         <div class="row">
@@ -104,23 +97,23 @@
         </table>
     </div>
     <script id="rowTemplate" type="text/x-kendo-tmplate">
-	            <tr>
-		            <td class="photo">
-                       <img src="#: ImageUrl#" alt="#: Id #" />
-		            </td>
-		            <td class="details">
-			           <p>#: Maker # #: Model# </p>
-			           <p>Year: #: ProductionYear #</p>
-			           <p>#: Engine # Gear: #:Gear #</p>
-                        <p>Horses: #:HP#</>
-		            </td>
-		            <td>
-		              Price: $#: Price # 
-		            </td>
-                     <td>
-		               <button id="#: Id #" class="singleCarPage">Details</button>
-		            </td>
-	           </tr>
+        <tr>
+            <td class="photo">
+                <img src="#: ImageUrl#" alt="#: Id #" />
+            </td>
+            <td class="details">
+                <p>#: Maker # #: Model# </p>
+                <p>Year: #: ProductionYear #</p>
+                <p>#: Engine # #: FuelType # #:Gear #</p>
+                <p>Horses: #:HP#</>
+            </td>
+            <td>
+                Price: $#: Price #
+            </td>
+            <td>
+                <button id="#: Id #" class="singleCarPage btn btn-primary">Details</button>
+            </td>
+        </tr>
     </script>
 
 </div>
