@@ -203,11 +203,13 @@
                         persister.cars.editCar(id, addDTO)
                             .then(function (data) {
                                 console.log(data);
-                                $("#error-message").text("");
                                 success();
                             }, function (error) {
                                 console.log(error);
-                                $("#error-message").text(error.responseJSON.Message);
+                                $('#error-message').append('<div id="alertdiv" class="alert alert-error"><span>' + error.responseJSON.Message + '</span></div>');
+                                setTimeout(function () {
+                                    $("#alertdiv").remove();
+                                }, 3000);
                             });
                     }
                 };

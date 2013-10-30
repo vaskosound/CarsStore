@@ -176,12 +176,15 @@ namespace Cars.Services.Controllers
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
                 UserValidator.ValidateUser(user);
                 UserValidator.ValidateAdmin(user.UserType);
-
+                
                 var userToUpdate = this.unitOfWork.userRepository.All().FirstOrDefault(x => x.Id == id);
                 if (userToUpdate == null)
                 {
                     throw new InvalidOperationException("User does not exist");
                 }
+                UserValidator.ValidateUserMail(userModel.Mail);
+                UserValidator.ValidateUserPhone(userModel.Phone);
+                UserValidator.ValidateUserLocation(userModel.Location);
                 userToUpdate.Mail = userModel.Mail;
                 userToUpdate.Phone = userModel.Phone;
                 userToUpdate.Location = userModel.Location;

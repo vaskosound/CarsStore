@@ -36,10 +36,14 @@ namespace Cars.Model
 
         public UserType UserType { get; set; }
 
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")]
         public string Mail { get; set; }
 
+        [RegularExpression(@"^[0-9\-\(\)\, ]+$")]
         public string Phone { get; set; }
 
+        [MaxLength(100)]
+        [StringLength(100)]
         public string Location { get; set; }
 
         public virtual ICollection<Car> Cars { get; set; } 

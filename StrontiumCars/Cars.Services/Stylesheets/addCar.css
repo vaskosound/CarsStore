@@ -39,7 +39,7 @@ span.k-tooltip {
     position: relative;
 }
 
-#error-message, #errors-log-reg {
+#error-message, #errors-messages {
     font-size: 1.2em;
-    color: red;
+    width: 300px;
 }

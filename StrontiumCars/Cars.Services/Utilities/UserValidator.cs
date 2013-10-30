@@ -2,6 +2,7 @@
 using Cars.Services.Models;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Cars.Services.Utilities
 {
@@ -14,6 +15,8 @@ namespace Cars.Services.Utilities
         private const int MinUsernameNicknameChars = 4;
         private const int MaxUsernameNicknameChars = 30;
         private const int Sha1CodeLength = 40;
+        private const string mailPattern = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+        private const string phonePattern = @"^[0-9\-\(\)\, ]+$";
 
         public static void ValidateUser(User user)
         {
@@ -36,6 +39,36 @@ namespace Cars.Services.Utilities
             if (userType != UserType.Administrator)
             {
                 throw new ServerErrorException("User is not an administrator!");
+            }
+        }
+
+        public static void ValidateUserMail(string mail)
+        {
+            if (!String.IsNullOrEmpty(mail))
+            {
+                if (!Regex.IsMatch(mail, mailPattern))
+                {
+                    throw new ServerErrorException("Mail is invalid!");
+                }
+            }
+        }
+
+        public static void ValidateUserPhone(string phone)
+        {
+            if (!String.IsNullOrEmpty(phone))
+            {
+                if (!Regex.IsMatch(phone, phonePattern))
+                {
+                    throw new ServerErrorException("Phone number is invalid!");
+                }
+            }
+        }
+
+        public static void ValidateUserLocation(string location)
+        {
+            if (location.Length >= 100)
+            {
+                throw new ServerErrorException("Location should be max 100 characters!");
             }
         }
         public static void ValidateUsername(string username)

@@ -188,6 +188,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -259,9 +264,16 @@
     <Content Include="Images\Cars\home.png" />
     <Content Include="index.html" />
     <Content Include="Scripts\app-start.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Data\CarsData.js" />
     <Content Include="Scripts\Data\persister.js" />
+    <Content Include="Scripts\Externals\bootstrap.js" />
+    <Content Include="Scripts\Externals\bootstrap.min.js" />
     <Content Include="Scripts\Externals\class.js" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\Externals\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\Externals\http-requester.js" />
     <Content Include="Scripts\Externals\jquery-2.0.3.js" />
@@ -272,6 +284,9 @@
     <Content Include="Scripts\Externals\rsvp.min.js" />
     <Content Include="Scripts\Externals\sha1.js" />
     <Content Include="Scripts\Externals\_references.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\ViewModels\editUserVeiwModel.js" />
     <Content Include="Scripts\ViewModels\editCarVeiwModel.js" />
     <Content Include="Scripts\ViewModels\addCarVeiwModel.js" />
@@ -374,6 +389,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -155,6 +155,7 @@
                 $("#grid").kendoGrid({
                     dataSource: data,
                     rowTemplate: kendo.template($("#rowTemplate").html()),
+                    
                 });
             });
         });
@@ -222,7 +223,7 @@
                             { model: vm });
                         layout.showIn("#main-content", view);
                         $("#grid").kendoGrid({
-                            dataSource: vm.gridSource,
+                            dataSource:  vm.gridSource,                        
                             rowTemplate: kendo.template($("#rowTemplate").html()),
                         });
                         kendo.bind($("#admin-panel"), vm);
@@ -320,7 +321,6 @@
     function attachEvents(selector) {
         selector.on('click', '#getLoginForm', function (ev) {
             ev.preventDefault();
-            $("#errors-log-reg").text("");
             viewsFactory.getLoginView().then(function (loginFormHTML) {
                 var viewModel = viewModelFactory.getLoginViewModel(function () {
                     loginPageCheck();

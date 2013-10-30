@@ -2,48 +2,49 @@
 </div>
 
 <script type="text/x-kendo-template" id="car-template">
-    <div>
+    <div id="car-details">
         <img data-bind="attr: {src: ImageUrl}" />
-        <ul id="car-details">
-            <li>
-                Model: <span data-bind="text: Maker"></span>
+        <dl class="dl-horizontal">
+            <dt> Model:</dt>
+            <dd>
+                <span data-bind="text: Maker"></span>
                 <span data-bind="text: Model"></span>
                 <span data-bind="text: Engine"></span>
                 <span data-bind="text: FuelType"></span>
                 <span data-bind="text: EngineVolume"></span>
-            </li>
-            <li>
-                Price: <span data-bind="text: Price"></span> $
-            </li>
-            <li>
-                Year: <span data-bind="text: ProductionYear"></span>
-            </li>
-            <li>
-                Mileage: <span data-bind="text: Mileage"></span>
-            </li>
-            <li>
-                Power: <span data-bind="text: HP"></span> HP
-            </li>
-            <li>
-                Gear: <span data-bind="text: Gear"></span>
-            </li>
-            <li>
-                Doors: <span data-bind="text: Doors"></span>
-            </li>
+            </dd>
+            <dt>Price:</dt>
+            <dd>
+                $<span data-bind="text: Price"></span>
+            </dd>
+            <dt>Year:</dt>
+            <dd>
+                <span data-bind="text: ProductionYear"></span>
+            </dd>
+            <dt>Mileage:</dt>
+            <dd>
+                <span data-bind="text: Mileage"></span>
+            </dd>
+            <dt>Power:</dt>
+            <dd>
+                <span data-bind="text: HP"></span> HP
+            </dd>
+            <dt>Gear:</dt>
+            <dd>
+                <span data-bind="text: Gear"></span>
+            </dd>
+            <dt>Doors:</dt>
+            <dd>
+                <span data-bind="text: Doors"></span>
+            </dd>
             # if(Extras.length > 0) { #
-            <li>
-                Extras
-                <ul>
-                    # for (extra in Extras) {
-                        if(Extras[extra].Name != undefined) { #
-                            <li>
-                                <span>#: Extras[extra].Name #</span>
-                            </li> #
-                        }
-                    } #
-                </ul>
-            </li> #
+            <dt>Extras:</dt>
+            <dd>
+                #: Extras.map(function(elem){
+                    return elem.Name;
+                }).join(", ")  #
+            </dd>    #
             } #
-        </ul>
+        </dl>
     </div>
 </script>
