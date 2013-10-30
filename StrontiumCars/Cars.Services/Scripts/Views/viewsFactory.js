@@ -52,9 +52,17 @@
     function getAddCarView() {
         return getTemplate("add");
     }
+
+    function getEditCarView() {
+        return getTemplate("edit");
+    }
     
     function getUsersView() {
         return getTemplate("admin");
+    }
+
+    function getEditUserView() {
+        return getTemplate("editUser");
     }
 
     return {
@@ -65,6 +73,8 @@
         getSearchView: getSearchView,
         getCarView: getCarView,
         getAddCarView: getAddCarView,
-        getUsersView: getUsersView
+        getEditCarView: getEditCarView,
+        getUsersView: getUsersView,
+        getEditUserView: getEditUserView
     };
 }());

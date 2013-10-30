@@ -272,6 +272,7 @@
     <Content Include="Scripts\Externals\rsvp.min.js" />
     <Content Include="Scripts\Externals\sha1.js" />
     <Content Include="Scripts\Externals\_references.js" />
+    <Content Include="Scripts\ViewModels\editUserVeiwModel.js" />
     <Content Include="Scripts\ViewModels\editCarVeiwModel.js" />
     <Content Include="Scripts\ViewModels\addCarVeiwModel.js" />
     <Content Include="Scripts\ViewModels\myCarsViewModel.js" />
@@ -281,6 +282,8 @@
     <Content Include="Scripts\ViewModels\loginViewModel.js" />
     <Content Include="Scripts\ViewModels\registerViewModel.js" />
     <Content Include="Scripts\ViewModels\searchViewModel.js" />
+    <Content Include="Scripts\Views\edit.html" />
+    <Content Include="Scripts\Views\editUser.html" />
     <Content Include="Scripts\Views\add.html" />
     <Content Include="Scripts\Views\admin.html" />
     <Content Include="Scripts\Views\my-cars.html" />

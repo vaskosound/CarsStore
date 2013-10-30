@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Strontium Cars</title>
-    
+
     <!--Stylesheets-->
     <link href="Stylesheets/bootstrap-responsive.css" rel="stylesheet" />
     <link href="Stylesheets/bootstrap.css" rel="stylesheet" />
@@ -30,10 +30,12 @@
     <script src="Scripts/ViewModels/loginViewModel.js"></script>
     <script src="Scripts/ViewModels/searchViewModel.js"></script>
     <script src="Scripts/ViewModels/myCarsViewModel.js"></script>
+    <script src="Scripts/ViewModels/allUsersViewModel.js"></script>
+    <script src="Scripts/ViewModels/editUserVeiwModel.js"></script>
     <script src="Scripts/app-start.js"></script>
-    
+
     <script>
-        //window.apiRootUrl = "http://localhost:7613/api/";
+        // window.apiRootUrl = "http://localhost:7613/api/";
         window.apiRootUrl = "http://strontium-cars.apphb.com/api/";
     </script>
 </head>
@@ -44,8 +46,7 @@
     <script id="layout-template" type="text/x-kendo-template">
         <header>
             <nav>
-                <ul id="menuContainer">
-                </ul>
+                <ul id="menuContainer"></ul>
             </nav>
         </header>
 

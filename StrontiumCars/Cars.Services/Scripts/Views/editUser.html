@@ -1,0 +1,39 @@
+﻿<div id="edit-user-form">
+    <h3>Edit user</h3>
+    <div id="requiredCarData">
+        <span data-bind="text: username" class="lead"></span>
+        <br />
+        <label for="mail">Mail:</label>
+        <input data-bind="value: mail" class="input-block-level" id="mail" />
+        <br />
+        <label for="phone">Phone:</label>
+        <input data-bind="value: phone" class="input-block-level" id="phone" />
+        <br />
+        <label for="location">Location:</label>
+        <input data-bind="value: location" class="input-block-level" id="location" />
+        <br />
+        <label for="userType">User Type:</label>
+        <input id="userType" data-bind="value: userType" style="width: 300px" />
+        <br />
+    </div>
+    <button data-bind="events: { click: editUser }" class="btn btn-primary">Edit user</button>
+    <div id="error-message"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        $("#userType").kendoComboBox({
+            dataTextField: "text",
+            dataValueField: "value",
+            dataSource: [
+                { text: "Admin", value: "0" },
+                { text: "Dealer", value: "1" },
+                 { text: "User", value: "2" },
+            ],
+            suggest: true,
+            index: 3
+        });
+
+    });
+</script>

@@ -30,6 +30,14 @@ namespace Cars.Services.Utilities
                 throw new ServerErrorException("User is not a dealer!");
             }
         }
+
+        public static void ValidateAdmin(UserType userType)
+        {
+            if (userType != UserType.Administrator)
+            {
+                throw new ServerErrorException("User is not an administrator!");
+            }
+        }
         public static void ValidateUsername(string username)
         {
             if (username == null || username.Length < MinUsernameNicknameChars || username.Length > MaxUsernameNicknameChars)

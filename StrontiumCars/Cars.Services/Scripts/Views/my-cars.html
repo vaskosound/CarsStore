@@ -1,4 +1,5 @@
-﻿<div id="example" class="k-content">
+﻿<h2>My cars</h2>
+<div id="example" class="k-content">
     <table id="grid">
         <!-- <colgroup>
             <col class="photo" />
@@ -33,7 +34,7 @@
             </td>
             <td>
                 <button id="#: Id #" class="singleCarPage btn btn-primary">Details</button>
-                <button id="#: Id #" class="editCarPage btn btn-primary">Edit</button>
+                <button id="#: Id #" data-bind="click: editCar" class="btn btn-primary">Edit</button>
                 <button id="#: Id #" data-bind="click: deleteCar" class="btn btn-primary">Delete</button>
             </td>
         </tr>

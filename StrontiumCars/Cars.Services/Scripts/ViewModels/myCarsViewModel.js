@@ -1,7 +1,7 @@
 ﻿window.viewModelFactory = window.viewModelFactory || {};
 
 (function (factory) {
-    var getMyCarsViewModel = function () {
+    var getMyCarsViewModel = function (success) {
         var persister = persisters.getPersister();        
         return persister.cars.getMyCars()
             .then(function (cars) {
@@ -19,10 +19,15 @@
                                 gridSourceDataSource.fetch(function () {
                                     gridSourceDataSource.data(newData);
                                 });
-                                console.log(gridSource);
                             }, function (error) {
                                 console.log(error);
                             });
+                    },
+                    editCar: function (ev) {
+                        ev.preventDefault();
+
+                        var id = ev.target.id;
+                        success(id);
                     }
                 };
                 return kendo.observable(myCarsViewModel);

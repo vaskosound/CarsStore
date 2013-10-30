@@ -59,6 +59,21 @@
             var header = getSessionKeyHeader();
             return httpRequester.getJSON(this.rootUrl + "all", header);
         },
+        getUser: function (id) {
+            var url = this.rootUrl + "get-user/" + id;
+            var header = getSessionKeyHeader();
+            return httpRequester.getJSON(url, header);
+        },
+        editUser: function (id, user) {
+            var url = this.rootUrl + "edit/" + id;
+            var header = getSessionKeyHeader();
+            return httpRequester.putJSON(url, user, header);
+        },
+        deleteUser: function (id) {
+            var url = this.rootUrl + "delete/" + id;
+            var header = getSessionKeyHeader();
+            return httpRequester.deleteJSON(url, header);
+        },
         login: function (user) {
             var url = this.rootUrl + 'login/';
             var userData =

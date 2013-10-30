@@ -63,7 +63,7 @@
                     refrigerator: isInArray(car.Extras, "Refrigerator"),
                     military: isInArray(car.Extras, "Military"),
                     extras: [], //just name {name: "name"}
-                    addCar: function () {
+                    editCar: function () {
                         var self = this;
                         self.set("extras", []);
                         //comfort
@@ -211,7 +211,6 @@
                             });
                     }
                 };
-
                 return kendo.observable(editCarViewModel);
             });
     };

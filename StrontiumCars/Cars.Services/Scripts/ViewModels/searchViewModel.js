@@ -92,7 +92,8 @@
             ],
             engines: [
                 { engine: "Diesel" },
-                { engine: "Benzin" }
+                { engine: "Petrol" },
+                { engine: "Gas" }
             ],
             gears: [
                 { gear: "Manual" },

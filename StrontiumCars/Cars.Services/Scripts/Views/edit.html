@@ -1,5 +1,5 @@
-﻿<div id="add-car-form">
-    <h3>Add car</h3>
+﻿<div id="edit-car-form">
+    <h3>Edit car</h3>
     <div id="requiredCarData">
         <input id="manufacturer" data-bind="value: maker" style="width: 300px" name="maker" required validationMessage="Please enter {0}" />
         <br />
@@ -73,7 +73,7 @@
             <li><input type="checkbox" name="extra" value="military" data-bind="checked: military">Military</li>
         </ul>
     </div>
-    <button data-bind="events: { click: addCar }" class="btn btn-primary">Add car</button>
+    <button data-bind="events: { click: editCar }" class="btn btn-primary">Edit car</button>
     <div id="error-message"></div>
 </div>
 

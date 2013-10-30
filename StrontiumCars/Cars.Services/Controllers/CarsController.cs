@@ -63,7 +63,7 @@ namespace Cars.Services.Controllers
                 UserValidator.ValidateUser(user);
                 UserValidator.ValidateDealer(user.UserType);
                 var matchedCars = unitOfWork.carRepository.All()
-                    .Where(x => x.Owner.DisplayName == user.DisplayName);
+                    .Where(x => x.Owner.Id == user.Id);
                 var carModels = matchedCars.Select(x => new CarModel()
                 {
                     Id = x.Id,
@@ -309,7 +309,7 @@ namespace Cars.Services.Controllers
                 UserValidator.ValidateDealer(user.UserType);
 
                 unitOfWork.carRepository.Delete(id);
-                var myCars = unitOfWork.carRepository.All().Where(c => c.Owner.DisplayName == user.DisplayName);
+                var myCars = unitOfWork.carRepository.All().Where(c => c.Owner.Id == user.Id);
                 var carModels = myCars.Select(x => new CarModel()
                 {
                     Id = x.Id,

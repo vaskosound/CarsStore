@@ -25,10 +25,8 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<IEnumerable<UserModel>>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                if (user == null)
-                {
-                    throw new InvalidOperationException("User has not logged in!");
-                }
+                UserValidator.ValidateUser(user);
+                UserValidator.ValidateAdmin(user.UserType);
 
                 var users = unitOfWork.userRepository.All();
                 var userModels = users.Select(x => new UserModel()
@@ -56,10 +54,8 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<UserDetailedModel>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                if (user == null)
-                {
-                    throw new InvalidOperationException("User has not logged in!");
-                }
+                UserValidator.ValidateUser(user);
+                UserValidator.ValidateAdmin(user.UserType);
 
                 var selectedUser = unitOfWork.userRepository.All().Single(x => x.Id == id);
                 var userModel = new UserDetailedModel()
@@ -159,15 +155,40 @@ namespace Cars.Services.Controllers
             {
                 var user =
                     this.unitOfWork.userRepository.All().SingleOrDefault(x => x.SessionKey == userModel.SessionKey);
-                if (user == null)
-                {
-                    throw new ArgumentException("User is missing or not logged in!");
-                }
+                UserValidator.ValidateUser(user);
 
                 user.SessionKey = null;
                 this.unitOfWork.userRepository.Update(user);
 
                 return this.Request.CreateResponse(HttpStatusCode.OK, userModel);
+            });
+
+            return messageResponse;
+        }
+
+        [HttpPut]
+        [ActionName("edit")]
+        public HttpResponseMessage UpdateUser(int id, [FromBody] UserModel userModel,
+            [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var messageResponse = this.TryExecuteOperation<HttpResponseMessage>(() =>
+            {
+                var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
+                UserValidator.ValidateUser(user);
+                UserValidator.ValidateAdmin(user.UserType);
+
+                var userToUpdate = this.unitOfWork.userRepository.All().FirstOrDefault(x => x.Id == id);
+                if (userToUpdate == null)
+                {
+                    throw new InvalidOperationException("User does not exist");
+                }
+                userToUpdate.Mail = userModel.Mail;
+                userToUpdate.Phone = userModel.Phone;
+                userToUpdate.Location = userModel.Location;
+                userToUpdate.UserType = userModel.UserType;
+                unitOfWork.userRepository.Update(userToUpdate);
+
+                return Request.CreateResponse(HttpStatusCode.OK, userModel);
             });
 
             return messageResponse;
@@ -181,24 +202,30 @@ namespace Cars.Services.Controllers
             var messageResponse = this.TryExecuteOperation<HttpResponseMessage>(() =>
             {
                 var user = unitOfWork.userRepository.All().Single(x => x.SessionKey == sessionKey);
-                if (user == null)
-                {
-                    throw new InvalidOperationException("User has not logged in!");
-                }
-                if (user.UserType != UserType.Administrator)
-                {
-                    throw new InvalidOperationException("Only administrators can delete users!");
-                }
+                UserValidator.ValidateUser(user);
+                UserValidator.ValidateAdmin(user.UserType);
 
                 var userCars = this.unitOfWork.carRepository.All().Where(x => x.Owner.Id == id).ToList();
 
-                for (int i = 0; i < userCars.Count(); i++)
+                while (userCars.Count > 0)
                 {
-                    unitOfWork.carRepository.Delete(userCars[i].Id);
+                    var car = userCars.First();
+                    unitOfWork.carRepository.Delete(car.Id);
+                    userCars.Remove(car);
                 }
-
                 unitOfWork.userRepository.Delete(id);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                var users = unitOfWork.userRepository.All();
+                var userModels = users.Select(x => new UserModel()
+                {
+                    Id = x.Id,
+                    Username = x.Username,
+                    DisplayName = x.DisplayName,
+                    Location = x.Location,
+                    Mail = x.Mail,
+                    Phone = x.Phone,
+                    UserType = x.UserType,
+                });
+                return Request.CreateResponse(HttpStatusCode.OK, userModels);
             });
 
             return messageResponse;

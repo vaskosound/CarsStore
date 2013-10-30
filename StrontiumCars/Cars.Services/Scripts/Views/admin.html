@@ -1,5 +1,6 @@
-﻿<div id="admin-panel">
-    <table id="grid1">
+﻿<h2>Users</h2>
+<div id="admin-panel">
+    <table id="grid">
         <!-- <colgroup>
             <col class="photo" />
             <col class="details" />
@@ -7,7 +8,13 @@
         </colgroup>-->
         <thead>
             <tr>
-                <th colspan="3">Results</th>
+                <th>Username</th>
+                <th>Display Name</th>
+                <th>Mail</th>
+                <th>Phone</th>
+                <th>Location</th>
+                <th>Role</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -17,21 +24,22 @@
         </tbody>
     </table>
 
-    <script id="rowTemplate1" type="text/x-kendo-tmplate">
-	            <tr>
-		            <td class="photo">
-                       <p>#: DisplayName # </p>
-		            </td>
-		            <td class="details">
-			           <p>#: Username #</p>
-			           <p>#: Location #</p>
-			           <p>#: Mail # </p>
-                       <p>#: Phone #</p>
-                       <p>#: UserType #</p>
-		            </td>
-		            <td>
-		              <button id="#: Id #" class="editUserProfile">Edit</button>
-		            </td>
-	           </tr>
+    <script id="rowTemplate" type="text/x-kendo-tmplate">
+        <tr>
+            <td>
+                #: Username #
+            </td>
+            <td>
+                #: DisplayName #
+            </td>
+            <td>#: Mail # </td>
+            <td>#: Phone #</td>
+            <td>#: Location #</td>
+            <td>#: UserType == 0 ? "Admin" : (UserType == 1) ? "Dealer" : "User" #</td>
+            <td>
+                <button id="#: Id #" class="btn btn-primary" data-bind="click: editUser">Edit</button>
+                <button id="#: Id #" class="btn btn-primary" data-bind="click: deleteUser">Delete</button>
+            </td>
+        </tr>
     </script>
 </div>
