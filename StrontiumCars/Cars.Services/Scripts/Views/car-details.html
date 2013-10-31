@@ -1,10 +1,11 @@
-﻿<div data-template="car-template" data-bind="source: carSource">
+﻿<h2>Car details</h2>
+<div data-template="car-template" data-bind="source: carSource">
 </div>
 
 <script type="text/x-kendo-template" id="car-template">
-    <div id="car-details">
-        <img data-bind="attr: {src: ImageUrl}" />
-        <dl class="dl-horizontal">
+    <div id="car-details" class="row">
+        <img class="details-img span4" data-bind="attr: {src: ImageUrl}" />
+        <dl class="dl-horizontal span8">
             <dt> Model:</dt>
             <dd>
                 <span data-bind="text: Maker"></span>
